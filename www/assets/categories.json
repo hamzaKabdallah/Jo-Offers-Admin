@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "Restaurants & Coffee Shops",
+        "arName": "مطاعم ومقاهي"
+    },
+    {
+        "id": 2,
+        "name": "Sweets",
+        "arName": "حلويات"
+    },
+    {
+        "id": 3,
+        "name": "Entertainment",
+        "arName": "ترفيه"
+    },
+    {
+        "id": 4,
+        "name": "Fashion",
+        "arName": "ازياء"
+    },
+    {
+        "id": 5,
+        "name": "Hotels & Travel",
+        "arName": "فنادق وسفريات"
+    },
+    {
+        "id": 6,
+        "name": "Furniture & Accessories",
+        "arName": "اثاث واكسسوارات"
+    },
+    {
+        "id": 7,
+        "name": "Health & Beauty",
+        "arName": "صحة وجمال"
+    },
+    {
+        "id": 8,
+        "name": "Electronics",
+        "arName": "الكترونيات"
+    },
+    {
+        "id": 9,
+        "name": "Gym",
+        "arName": "نوادي رياضية"
+    },
+    {
+        "id": 10,
+        "name": "Education",
+        "arName": "تعليم"
+    },
+    {
+        "id": 11,
+        "name": "Gifts & More",
+        "arName": "هدايا واكثر"
+    }
+]

@@ -1,0 +1,46 @@
+:host {
+  border: solid orange;
+  border-radius: 24px;
+  margin: 10px 0px;
+}
+
+div.button-container {
+  position: fixed;
+  right: 25px;
+  bottom: 21px;
+}
+
+.container {
+  align-items: center;
+  width: 95%;
+  margin: auto;
+
+  .new-offer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: darksalmon;
+    border-radius: 20px;
+    padding: 4px;
+  }
+
+  mat-card-header {
+    color: white;
+    background-color: rgb(194, 24, 91);
+    margin-bottom: 25px;
+    margin-top: 1%;
+    padding: 0px 5px;
+
+    &.main-page-header {
+      width: 95%;
+    }
+    &.card-header {
+      border-radius: 14px;
+    }
+
+    .header-image {
+      background-size: cover;
+      background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    }
+  }
+}

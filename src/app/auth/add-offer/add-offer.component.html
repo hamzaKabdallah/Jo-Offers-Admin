@@ -1,0 +1,132 @@
+<mat-card>
+  <mat-card-title>Add New Offer</mat-card-title>
+  <mat-card-content>
+    <mat-stepper [linear]="true" #stepper [animationDuration]="'500'">
+      <mat-step>
+        <form [formGroup]="form" (submit)="submit(stepper)">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter Offer merchantName</mat-label>
+              <input
+                matInput
+                placeholder="Enter merchantName"
+                formControlName="merchantName"
+              />
+              <mat-error>enter a valid merchantName</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter Offer description</mat-label>
+              <input
+                matInput
+                placeholder="Enter description"
+                formControlName="description"
+                required
+              />
+              <mat-error>enter a valid description</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <p>
+            <mat-form-field class="discount" appearance="fill">
+              <mat-label>Enter Offer discount</mat-label>
+              <input
+                matInput
+                placeholder="Enter discount"
+                formControlName="discount"
+                
+              />
+              <span margin matSuffix>%</span>
+              <mat-error>enter a valid discount</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="validUntil"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #picker
+                startView="year"
+                [startAt]="startDate"
+              ></mat-datepicker>
+    
+              <mat-error *ngIf="form.controls.validUntil.hasError('required')">Date is required</mat-error>
+              <mat-error *ngIf="form.controls.validUntil.hasError('pastDate')">Cannot select past dates or today</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <p *ngIf="user?.role === 1">
+            <mat-form-field appearance="fill">
+              <mat-label>Select Offer bank</mat-label>
+              <mat-select formControlName="bankName">
+                <mat-option
+                  *ngFor="let bank of banks | async"
+                  [value]="bank.fullName"
+                >
+                  {{ bank.shortName }}
+                </mat-option>
+              </mat-select>
+    
+              <mat-error>Please Selec Bank</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Select Offer Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+     
+              <mat-error>Please Selec Category</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <input #mapSearchField class="my-map-search-field" type="text" />
+          <google-map
+            width="100%"
+            [center]="initialCoordinates"
+            [options]="mapConfigurations"
+            (mapClick)="onMapClick($event)"
+          >
+            <map-marker
+              *ngFor="let markerPosition of markerPositions"
+              [position]="markerPosition"
+              [options]="markerOptions"
+            ></map-marker>
+          </google-map>
+          <mat-error *ngIf="form.hasError('isSelectPlace')"
+            >Please Selec Place From The Map</mat-error
+          >
+          <div class="button">
+            <button type="submit" mat-button>{{ isupdateMode ? 'Update' :  'Add Offer'}}</button>
+          </div>
+        </form>
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Add logo</ng-template>
+        <app-file-uploader
+          formDataKey="logo"
+          (data)="onLogochanged($event)"
+        >
+        </app-file-uploader>
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>

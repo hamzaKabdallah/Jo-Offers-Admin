@@ -1,0 +1,15 @@
+<mat-toolbar *ngIf="isShowToolbar | async">
+  <span>Jo Offers (Admin widget) {{ email }}</span>
+  
+  <button
+  *ngIf="user"
+  (click)="logout()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+<app-spinner *ngIf="loaderService.getLoader() | async"></app-spinner>
+<router-outlet></router-outlet>

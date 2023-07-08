@@ -1,0 +1,36 @@
+<mat-card class="card-container">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <img [src]="'https://avatars.githubusercontent.com/u/124091983'" alt="Oops something wrong" />
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="email"
+            />
+  
+            <mat-error>
+              Emial invalid
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+            />
+  
+            <mat-error>
+              Password invalid
+            </mat-error>
+          </mat-form-field>
+  
+  
+        <div class="button">
+          <button type="submit" color="primary" mat-raised-button>Login</button>
+        </div>
+      </form>
+  </mat-card>
+  

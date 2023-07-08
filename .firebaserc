@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "jooffers-2a605": {
+      "hosting": {
+        "ofersadmin": [
+          "jooffers-2a605"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "jooffers-2a605"
+  }
+}

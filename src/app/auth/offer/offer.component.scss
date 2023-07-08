@@ -1,0 +1,54 @@
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 3fr 1fr;
+  grid-gap: 10px;
+}
+
+.text-row {
+  margin-bottom: 10px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.grid-details-item {
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+
+  .text-row {
+    margin-bottom: 0px;
+
+    &.title {
+      color: #1f1f1f;
+      font-size: 16px;
+      font-family: Poppins;
+      font-weight: 500;
+    }
+
+    &.description {
+      color: #545454;
+      font-size: 14px;
+      font-family: Poppins;
+      font-weight: 400;
+    }
+
+    &.percent {
+    }
+  }
+}
+.btn-action-container {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: space-evenly;
+}

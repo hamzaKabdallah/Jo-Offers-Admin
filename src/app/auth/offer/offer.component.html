@@ -1,0 +1,35 @@
+<!-- <mat-card-header class="card-header">
+  <div mat-card-avatar class="header-image"></div>
+  <mat-card-title>{{offer.merchantName}}</mat-card-title>
+  <mat-card-subtitle>{{ offer.description }}</mat-card-subtitle>
+</mat-card-header>
+<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<mat-card-content>
+  <p>
+  {{offer.discount}}
+  </p>
+
+  <button mat-button (click)="onUpdate()" >update</button>
+  <button mat-button (click)="onDelete()" >delete</button>
+
+</mat-card-content> -->
+
+
+<mat-card>
+  <mat-card-content>
+    <div class="grid-container">
+      <div class="grid-item">
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Image" class="image">
+      </div>
+      <div class="grid-item grid-details-item">
+        <div class="text-row title">{{offer.merchantName}}</div>
+        <div class="text-row description">{{ offer.description }}</div>
+        <div class="text-row percent">{{offer.discount}}</div>
+      </div>
+      <div class="btn-action-container">
+        <button mat-button (click)="onUpdate()" >update</button>
+        <button mat-button (click)="onDelete()" >delete</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
