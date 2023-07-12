@@ -10,7 +10,7 @@ import {
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth'
 import { Observable } from '@firebase/util';
 import { IBank } from 'src/app/shared/interfaces/banks.interface';
-import { UserStoreService } from 'src/app/shared/services/user-store.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-add-user',
@@ -30,8 +30,8 @@ export class AddUserComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private firestore: Firestore,
-    private userStoreService: UserStoreService,
-    private auth: Auth
+    private auth: Auth,
+    private loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +63,7 @@ export class AddUserComponent implements OnInit {
     }
 
     const user = { ...this.form.value, }
+    this.loaderService.setLoader(true);
     this.http
       .post(
         'https://us-central1-jooffers-2a605.cloudfunctions.net/joOffersAdmin/createUser',
@@ -77,7 +78,10 @@ export class AddUserComponent implements OnInit {
           handleCodeInApp: false
         };
 
-        sendPasswordResetEmail(this.auth, (user.email as string), actionCodeSettings).then(console.log)
+        sendPasswordResetEmail(this.auth, (user.email as string), actionCodeSettings).then((val) => {
+          this.loaderService.setLoader(false);
+          console.log('email sent to user');
+        })
         .catch(err => {
           try {
             console.warn(err)

@@ -1,62 +1,57 @@
-<mat-card>
-  <mat-card-title>Add New User</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="form" (submit)="createUser()">
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>Enter user name</mat-label>
-          <input
-            matInput
-            placeholder="Enter name"
-            formControlName="name"
-            required
-          />
-          <mat-error>enter a valid name</mat-error>
-        </mat-form-field>
-      </p>
+<mat-card class="card-container">
+  <form [formGroup]="form" (ngSubmit)="createUser()">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter user name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+        />
 
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>Enter user email</mat-label>
-          <input
-            matInput
-            placeholder="Enter email"
-            formControlName="email"
-            required
-          />
-          <mat-error>enter a valid Email</mat-error>
-        </mat-form-field>
-      </p>
+        <mat-error>
+          enter a valid name
+        </mat-error>
+      </mat-form-field>
 
-      <!-- <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Select user Role</mat-label>
-            <mat-select formControlName="role" >
-              <mat-option *ngFor="let role of roles" [value]="role">
-                {{ role }}
-              </mat-option>
-            </mat-select>
-            
-            <mat-error>Please Selec Role</mat-error>
-        </mat-form-field>
-      </p> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Enter user email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+        />
 
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>Select user bank</mat-label>
-          <mat-select formControlName="bank" >
-            <mat-option *ngFor="let bank of banks" [value]="bank.id">
-              {{ bank.shortName }}
-            </mat-option>
-          </mat-select>
-          
+        <mat-error>
+          Enter a Valid Email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" >
+        <mat-label>Select user bank</mat-label>
+
+        <mat-select formControlName="bank" >
+          <mat-option *ngFor="let bank of banks" [value]="bank.id">
+            {{ bank.shortName }}
+          </mat-option>
           <mat-error>Please Selec Bank</mat-error>
-        </mat-form-field>
-      </p>
+        </mat-select>
+        
+      </mat-form-field>
 
-      <div class="button">
-        <button type="submit" mat-button>Add</button>
-      </div>
-    </form>
-  </mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Select user Role</mat-label>
+        <mat-select formControlName="role" >
+          <mat-option *ngFor="let role of roles" [value]="role">
+            {{ role }}
+          </mat-option>
+        </mat-select>
+        
+        <mat-error>Please Selec Role</mat-error>
+      </mat-form-field>
+
+    <div class="button">
+      <button type="submit" color="primary" mat-raised-button>Add User</button>
+    </div>
+  </form>
 </mat-card>
+
