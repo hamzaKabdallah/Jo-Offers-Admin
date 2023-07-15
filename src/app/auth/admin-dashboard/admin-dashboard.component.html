@@ -32,12 +32,11 @@
     </mat-card>
 
     <mat-paginator
-    [length]="3"
+    [length]="length"
     [pageSize]="pageSize"
     [showFirstLastButtons]="true"
-    [pageSizeOptions]="[5,10,15]"
-    [pageIndex]="currentPage"
-    (page)="handlePageEvent($event)"
+    [pageIndex]="currentPage-1"
+    (page)="handlePageEvent($event.pageIndex + 1)"
     >
   </mat-paginator>
 </mat-card-content>

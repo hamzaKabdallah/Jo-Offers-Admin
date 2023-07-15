@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, map, take, tap } from 'rxjs';
 import { IAuthUser } from 'src/app/shared/interfaces/auth-user.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 import { OffersService } from 'src/app/shared/services/offers.service';
@@ -26,9 +26,10 @@ import { limit, startAfter } from 'firebase/firestore';
 export class AdminDashboardComponent {
   user!: IAuthUser | null;
   offers!: Observable<IOffer[]>;
-  protected currentPage = 0;
-  protected pageSize = 3;
+  protected currentPage = 1;
+  protected pageSize = 10;
   protected length = 0;
+  lastItem:any;
   /**
    *
    */
@@ -50,25 +51,25 @@ export class AdminDashboardComponent {
       if (!user) {
         return;
       }
-
       this.user = user;
-      this.offers = this.offersService.getOffers(this.user.bank);
+      this.loadItems();
     });
   }
 
-  handlePageEvent(pageEvent: PageEvent) {
-    console.log(pageEvent);
-    this.currentPage = pageEvent.length;
-    
-    const colection = collection( this.firestore,
-      `offers/${this.user?.bank}/offers`);
-    
-      this.offers = collectionData(query(
-        colection,
-        orderBy('merchantName'),
-        startAfter((pageEvent.pageIndex + 1) * this.pageSize),
-        limit(this.pageSize),
-      ),
-      { idField: 'id' }) as Observable<IOffer[]>;
+  loadItems() {
+    this.offers = this.offersService.getOffers(this.user!.bank)
+      .pipe(
+        tap(items => this.length = items.length),
+        map(items => {
+          const startIndex = (this.currentPage - 1) * this.pageSize;
+          return items.slice(startIndex, startIndex + this.pageSize);
+        })
+      );
+  }
+
+  handlePageEvent(page:number) {
+
+    this.currentPage = page;
+    this.loadItems();
   }
 }
