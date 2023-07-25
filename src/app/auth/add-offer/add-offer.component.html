@@ -97,22 +97,25 @@
             </mat-form-field>
           </p>
     
-          <input #mapSearchField class="my-map-search-field" type="text" />
-          <google-map
-            width="100%"
-            [center]="initialCoordinates"
-            [options]="mapConfigurations"
-            (mapClick)="onMapClick($event)"
-          >
-            <map-marker
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-            ></map-marker>
-          </google-map>
-          <mat-error *ngIf="form.hasError('isSelectPlace')"
-            >Please Selec Place From The Map</mat-error
-          >
+          
+          <p>
+            <input #mapSearchField class="my-map-search-field" type="text" />
+            <google-map
+              width="100%"
+              [center]="initialCoordinates"
+              [options]="mapConfigurations"
+              (mapClick)="onMapClick($event)"
+            >
+              <map-marker
+                *ngFor="let markerPosition of markerPositions"
+                [position]="markerPosition"
+                [options]="markerOptions"
+              ></map-marker>
+            </google-map>
+            <mat-error *ngIf="form.hasError('isSelectPlace')"
+              >Please Selec Place From The Map</mat-error
+            >
+          </p>
           <div class="button">
             <button type="submit" mat-button>{{ isupdateMode ? 'Update' :  'Add Offer'}}</button>
           </div>

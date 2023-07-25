@@ -13,7 +13,6 @@
         justify-content: center;
       
         form {
-          width: 70%;
           
           mat-form-field {
             display: block;
@@ -24,15 +23,6 @@
               color: white;
               background-color: red;
             }
-
-            // &.discount {
-            //   div {
-            //     &.mat-mdc-form-field-infix {
-            //       flex: inherit;
-            //     }
-            //   } 
-            // }
-          }
         }
       }
   }
@@ -43,4 +33,3 @@
     display: flex;
     justify-content: flex-end;
   }
-  
