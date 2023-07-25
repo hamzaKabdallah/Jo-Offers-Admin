@@ -32,7 +32,7 @@
     </mat-card>
 
     <mat-paginator
-    [length]="length"
+    [length]="pageLength"
     [pageSize]="pageSize"
     [showFirstLastButtons]="true"
     [pageIndex]="currentPage-1"
@@ -41,5 +41,3 @@
   </mat-paginator>
 </mat-card-content>
 </mat-card>
-
-<!-- [length]="(Math.ceil((offers | async)?.length || 0) / pageSize)" -->

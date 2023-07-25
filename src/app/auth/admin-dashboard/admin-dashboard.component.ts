@@ -28,7 +28,7 @@ export class AdminDashboardComponent {
   offers!: Observable<IOffer[]>;
   protected currentPage = 1;
   protected pageSize = 10;
-  protected length = 0;
+  protected pageLength = 0;
   lastItem:any;
   /**
    *
@@ -59,7 +59,7 @@ export class AdminDashboardComponent {
   loadItems() {
     this.offers = this.offersService.getOffers(this.user!.bank)
       .pipe(
-        tap(items => this.length = items.length),
+        tap(items => this.pageLength = items.length),
         map(items => {
           const startIndex = (this.currentPage - 1) * this.pageSize;
           return items.slice(startIndex, startIndex + this.pageSize);
